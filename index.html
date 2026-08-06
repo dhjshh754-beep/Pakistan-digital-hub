@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💬 میری چاٹ ایپ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- ====== لاگن اسکرین ====== -->
+    <div id="loginScreen" class="screen active">
+        <div class="container">
+            <div class="logo">💬</div>
+            <h1>میری چاٹ</h1>
+            <p class="subtitle">اپنا نام اور نمبر درج کریں</p>
+            
+            <input type="text" id="username" placeholder="👤 اپنا نام لکھیں" class="input-field">
+            <input type="text" id="phoneNumber" placeholder="📱 نمبر (مثال: 03001234567)" class="input-field">
+            
+            <button onclick="login()" class="btn btn-primary">🚀 چاٹ شروع کریں</button>
+            
+            <div id="loginError" class="error-message"></div>
+        </div>
+    </div>
+    
+    <!-- ====== چیٹ اسکرین ====== -->
+    <div id="chatScreen" class="screen">
+        <!-- ہیڈر -->
+        <div class="chat-header">
+            <div>
+                <h2>💬 میری چاٹ</h2>
+                <span id="onlineCount" class="online-badge">🟢 0 آن لائن</span>
+            </div>
+            <button onclick="logout()" class="btn-logout" title="لاگ آؤٹ">🚪</button>
+        </div>
+        
+        <!-- میسجز کا باکس -->
+        <div id="messagesContainer" class="messages-container">
+            <!-- یہاں میسجز آئیں گے -->
+            <div class="welcome-message">
+                👋 خوش آمدید!<br>
+                <small>یہاں میسج لکھیں</small>
+            </div>
+        </div>
+        
+        <!-- ان پٹ -->
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="✏️ میسج لکھیں..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()" class="btn-send">📤</button>
+        </div>
+    </div>
+    
+    <!-- ====== سائیڈ بار (آن لائن یوزرز) ====== -->
+    <div id="usersSidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>👥 آن لائن</h3>
+            <button onclick="toggleSidebar()" class="sidebar-close">✕</button>
+        </div>
+        <div id="usersList">
+            <div class="user-item">
+                <span class="dot"></span>
+                آپ
+            </div>
+            <div class="user-item">
+                <span class="dot"></span>
+                دوست 1
+            </div>
+            <div class="user-item">
+                <span class="dot"></span>
+                دوست 2
+            </div>
+        </div>
+    </div>
+    
+    <!-- سائیڈ بار ٹوگل بٹن -->
+    <button onclick="toggleSidebar()" class="sidebar-toggle">👥</button>
+    
+    <script src="script.js"></script>
+</body>
+      </html>
