@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💬 میری چاٹ ایپ</title>
+    <title>💬 My Chat App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,15 +12,21 @@
     <div id="loginScreen" class="screen active">
         <div class="container">
             <div class="logo">💬</div>
-            <h1>میری چاٹ</h1>
-            <p class="subtitle">اپنا نام اور نمبر درج کریں</p>
+            <h1 id="appTitle">My Chat</h1>
+            <p class="subtitle" id="loginSubtitle">Enter your name and number</p>
             
-            <input type="text" id="username" placeholder="👤 اپنا نام لکھیں" class="input-field">
-            <input type="text" id="phoneNumber" placeholder="📱 نمبر (مثال: 03001234567)" class="input-field">
+            <input type="text" id="username" placeholder="👤 Your Name" class="input-field">
+            <input type="text" id="phoneNumber" placeholder="📱 Phone (e.g. 03001234567)" class="input-field">
             
-            <button onclick="login()" class="btn btn-primary">🚀 چاٹ شروع کریں</button>
+            <button onclick="login()" class="btn btn-primary" id="loginBtn">🚀 Start Chat</button>
             
             <div id="loginError" class="error-message"></div>
+            
+            <!-- ====== Language Toggle ====== -->
+            <div class="language-toggle">
+                <button onclick="setLanguage('ur')" class="lang-btn" id="langUr">🇵🇰 اردو</button>
+                <button onclick="setLanguage('en')" class="lang-btn" id="langEn">🇬🇧 English</button>
+            </div>
         </div>
     </div>
     
@@ -29,46 +35,50 @@
         <!-- ہیڈر -->
         <div class="chat-header">
             <div>
-                <h2>💬 میری چاٹ</h2>
-                <span id="onlineCount" class="online-badge">🟢 0 آن لائن</span>
+                <h2 id="chatTitle">💬 My Chat</h2>
+                <span id="onlineCount" class="online-badge">🟢 0 online</span>
             </div>
-            <button onclick="logout()" class="btn-logout" title="لاگ آؤٹ">🚪</button>
+            <div class="header-buttons">
+                <button onclick="toggleLanguage()" class="btn-lang" id="langToggleBtn" title="Change Language">
+                    🌐
+                </button>
+                <button onclick="logout()" class="btn-logout" title="Logout">🚪</button>
+            </div>
         </div>
         
         <!-- میسجز کا باکس -->
         <div id="messagesContainer" class="messages-container">
-            <!-- یہاں میسجز آئیں گے -->
-            <div class="welcome-message">
-                👋 خوش آمدید!<br>
-                <small>یہاں میسج لکھیں</small>
+            <div class="welcome-message" id="welcomeMsg">
+                👋 Welcome!<br>
+                <small>Start typing your message</small>
             </div>
         </div>
         
         <!-- ان پٹ -->
         <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="✏️ میسج لکھیں..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <input type="text" id="messageInput" placeholder="✏️ Type a message..." onkeypress="if(event.key==='Enter') sendMessage()">
             <button onclick="sendMessage()" class="btn-send">📤</button>
         </div>
     </div>
     
-    <!-- ====== سائیڈ بار (آن لائن یوزرز) ====== -->
+    <!-- ====== سائیڈ بار ====== -->
     <div id="usersSidebar" class="sidebar">
         <div class="sidebar-header">
-            <h3>👥 آن لائن</h3>
+            <h3 id="onlineTitle">👥 Online</h3>
             <button onclick="toggleSidebar()" class="sidebar-close">✕</button>
         </div>
         <div id="usersList">
             <div class="user-item">
                 <span class="dot"></span>
-                آپ
+                You
             </div>
             <div class="user-item">
                 <span class="dot"></span>
-                دوست 1
+                Friend 1
             </div>
             <div class="user-item">
                 <span class="dot"></span>
-                دوست 2
+                Friend 2
             </div>
         </div>
     </div>
@@ -76,6 +86,7 @@
     <!-- سائیڈ بار ٹوگل بٹن -->
     <button onclick="toggleSidebar()" class="sidebar-toggle">👥</button>
     
+    <script src="languages.js"></script>
     <script src="script.js"></script>
 </body>
-      </html>
+                </html>
